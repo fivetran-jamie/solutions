@@ -16,7 +16,7 @@ extract_volume_data as (
       sum(message_data:count::integer) as records_updated_or_inserted
   
     from parse_json
-    where message_data:operationType = 'REPLACED_OR_INSERTED' -- there's also UPDATED ? 
+    where message_data:operationType = 'REPLACED_OR_INSERTED'
   
     group by date_day, "schema", "table"
   
