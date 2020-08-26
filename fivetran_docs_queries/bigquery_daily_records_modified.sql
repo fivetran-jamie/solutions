@@ -8,4 +8,4 @@ WHERE date_diff( cast(CURRENT_DATE() as date), cast(time_stamp as date), DAY) < 
   AND message_event = 'records_modified'
   and JSON_EXTRACT_SCALAR(message_data, '$.operationType') = 'REPLACED_OR_INSERTED'
 group by date_day, schema, table
-order by date_day desc
+order by date_day desc;

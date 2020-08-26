@@ -15,4 +15,4 @@ WITH parse_json AS (
   from parse_json
   where message_data:operationType = 'REPLACED_OR_INSERTED'
   group by date_day, "schema", "table"
-  order by date_day desc
+  order by date_day desc;
