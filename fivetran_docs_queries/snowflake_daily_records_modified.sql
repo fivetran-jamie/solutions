@@ -11,8 +11,7 @@ WITH parse_json AS (
     date_day,
     message_data:schema as "schema",
     message_data:table as "table",
-    sum(message_data:count::integer) as records_updated_or_inserted
+    sum(message_data:count::integer) as row_volume
   from parse_json
-  where message_data:operationType = 'REPLACED_OR_INSERTED'
   group by date_day, "schema", "table"
   order by date_day desc;
