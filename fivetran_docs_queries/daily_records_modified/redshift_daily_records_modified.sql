@@ -2,7 +2,7 @@ SELECT
   DATE_TRUNC('DAY', time_stamp) AS date_day,
   JSON_EXTRACT_PATH_TEXT(message_data, 'schema') AS schema, 
   JSON_EXTRACT_PATH_TEXT(message_data, 'table') AS "table", 
-  sum(JSON_EXTRACT_PATH_TEXT(message_data, 'count')::integer) AS row_volume
+  SUM(JSON_EXTRACT_PATH_TEXT(message_data, 'count')::integer) AS row_volume
 FROM fivetran_log.log
 WHERE 
   DATEDIFF(day, time_stamp, current_date) < 30
