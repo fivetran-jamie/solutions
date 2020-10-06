@@ -12,7 +12,7 @@ WITH parse_json AS (
 select 
     message_data:schema as connector_schema,
     MAX(time_stamp) AS last_records_modified_at,
-    SUM(CASE WHEN time_stamp > last_sync_completed_at or last_sync_completed_at is null THEN message_data:count::integer ELSE 0 END) AS row_volume_since_last_sync
+    SUM(CASE WHEN time_stamp > last_sync_completed_at OR last_sync_completed_at IS NULL THEN message_data:count::integer ELSE 0 END) AS row_volume_since_last_sync
 FROM parse_json 
 WHERE message_event = 'records_modified'
 GROUP BY connector_schema
